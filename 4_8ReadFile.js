@@ -44,4 +44,55 @@ const fs = require('fs');
 // fs.unlink('./text.txt', err => {});
 
 // 创建文件夹
-fs.mkdir('testMakedir', err => {});
+// fs.mkdir('testMakedir', err => {});
+
+// 监视文件
+// fs.watch('./', {
+//   recursive: true
+// }, (eventType, filename) => {
+//   console.log(eventType, filename);
+// })
+
+// readStream
+// const rdStream = fs.createReadStream('./4_8ReadFile.js');
+// rdStream.pipe(process.stdout);
+
+// writeStream
+// const ws = fs.createWriteStream('./test.txt');
+
+// const tid = setInterval(() => {
+//   const num = parseInt(Math.random()*10);
+//   if(num < 9) {
+//     ws.write(num + '')
+//   } else {
+//     clearInterval(tid);
+//     ws.end();
+//   }
+// }, 200);
+
+// ws.on('finish', () => {
+//   console.log('写完了！');
+// })
+
+// readFile回调地狱
+const promisify = require('util').promisify;
+const read = promisify(fs.readFile);
+
+// read('./4_8ReadFile.js').then(data => {
+//   console.log(data.toString());
+// }).catch(ex => {
+//   console.log(ex);
+// })
+
+
+async function test() {
+  try {
+    const content = await read('./4_8ReadFile.js');
+    console.log(content.toString());
+  } catch (ex) {
+    console.log(ex);
+  }
+}
+test();
+
+  

@@ -28,7 +28,3 @@ console.log(format(parse(filePath1)));  // 对象转换为路径
 console.log('sep:', sep);  // 路径的分隔符
 console.log('PATH', process.env.PATH);
 console.log('delimiter:', delimiter);
-
-
-
-
